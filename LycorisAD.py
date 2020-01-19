@@ -152,6 +152,14 @@ class AnomalyDetection:
             logging.info("Find the threshold: " + str(self.__threshold))
 
     def detect(self, data):
+        """Detect samples.
+
+        :param data: Samples to be detected.
+        :return: The results after detecting the samples are returned as a list. There are two fields, the first is a
+                 Boolean value, and the second is the reconstruction error. Where 'True' indicates normal and 'False'
+                 indicates anomaly.
+        """
+
         if np.array(data).ndim == 1:
             data = [data]
 

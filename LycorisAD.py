@@ -36,7 +36,7 @@ class AnomalyDetection:
     def __init__(self, config):
         """Initialization
 
-        :param config: Store configuration information, including 12 configuration fields. More details can be found in
+        :param config: The configuration information, including 12 configuration fields. More details can be found in
                        the relevant documentation.
         """
 
@@ -224,6 +224,12 @@ class AnomalyDetection:
         return l_ad
 
     def set_config(self, config):
+        """Set the configuration information of AnomalyDetection.
+
+        :param config: The configuration information, including 12 configuration fields.
+        :return: None.
+        """
+
         self.__check_config(config)
         self.__config = config
 

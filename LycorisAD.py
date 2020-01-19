@@ -252,24 +252,31 @@ class AnomalyDetection:
         self.__lie.setCpuCores(num=workers)
 
     def get_threshold(self):
-        """Get the threshold.
-
-        :return: The threshold.
-        """
+        """Get the threshold."""
 
         return self.__threshold
 
     @staticmethod
     def version():
+        """Returns the version information of AnomalyDetection."""
+
         lycoris_version = Lycoris.version()
         return "LycorisAD 1.0-Dev By RootHarold." + "\nPowered By " + lycoris_version[:-15] + "."
 
     def __decode(self, individual):
+        """The decoder assisting in the genetic algorithm.
+
+        :param individual: Binary encoding.
+        :return: Decimal encoding.
+        """
+
         num = int(''.join([str(_) for _ in individual]), 2)
         x = num * math.ceil(self.__max_num) / (2 ** 26 - 1)
         return x
 
     def __eval(self, individual):
+        """Define the fitness calculation process in the genetic algorithms."""
+
         value = self.__decode(individual)
         fitness = 0.0
 
@@ -285,6 +292,11 @@ class AnomalyDetection:
 
     @staticmethod
     def __check_config(config):
+        """Check whether the configuration information is valid.
+
+        :param config: The configuration information, including 12 configuration fields.
+        :return: None.
+        """
         keys = ["capacity", "dimension", "nodes", "connections", "depths", "batch_size", "epoch"]
         for item in keys:
             if item not in config:

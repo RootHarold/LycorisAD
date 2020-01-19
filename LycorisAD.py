@@ -8,17 +8,30 @@ import numpy as np
 import json
 import logging
 
-'''
-    Copyright (c) 2020, RootHarold
-    All rights reserved.
-    Use of this source code is governed by a LGPL-3.0 license that can be found
-    in the LICENSE file.
-'''
+"""Copyright information.
+
+Copyright (c) 2020, RootHarold
+All rights reserved.
+Use of this source code is governed by a LGPL-3.0 license that can be found
+in the LICENSE file.
+"""
 
 logging.basicConfig(format='%(asctime)s - %(levelname)s: %(message)s', level=logging.INFO)
 
 
 class AnomalyDetection:
+    """An elegant outlier detection algorithm framework based on AutoEncoder.
+
+    Attributes:
+        __config: Store configuration information, including 12 configuration fields.
+        __lie: The neural network based on LycorisNet, which is the core of the AutoEncoder.
+        __ret_pos: Auxiliary threshold calculation, which stores the reconstruction error of normal samples.
+        __ret_neg: Auxiliary threshold calculation, storing reconstruction error of anomaly samples.
+        __threshold: Those below this threshold are normal samples, and those above this threshold are anomaly samples.
+        __max_num: AnomalyDetection uses a genetic algorithm to calculate the threshold, and __max_num assists the
+                   calculation process.
+        __flag: Avoid preheat operations being executed multiple times in LycorisNet.
+    """
 
     def __init__(self, config):
         if config is not None:

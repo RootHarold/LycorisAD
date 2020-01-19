@@ -1,3 +1,11 @@
+"""Copyright information.
+
+Copyright (c) 2020, RootHarold
+All rights reserved.
+Use of this source code is governed by a LGPL-3.0 license that can be found
+in the LICENSE file.
+"""
+
 from LycorisNet import Lycoris
 from LycorisNet import loadModel
 from deap import creator, base, tools, algorithms
@@ -7,14 +15,6 @@ import random
 import numpy as np
 import json
 import logging
-
-"""Copyright information.
-
-Copyright (c) 2020, RootHarold
-All rights reserved.
-Use of this source code is governed by a LGPL-3.0 license that can be found
-in the LICENSE file.
-"""
 
 logging.basicConfig(format='%(asctime)s - %(levelname)s: %(message)s', level=logging.INFO)
 

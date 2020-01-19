@@ -34,6 +34,12 @@ class AnomalyDetection:
     """
 
     def __init__(self, config):
+        """Initialization
+
+        :param config: Store configuration information, including 12 configuration fields. More details can be found in
+                       the relevant documentation.
+        """
+
         if config is not None:
             self.__check_config(config)
             self.__config = config
@@ -48,6 +54,14 @@ class AnomalyDetection:
             self.__flag = True
 
     def encode(self, data, normals, anomalies):
+        """Self-encode the samples and calculate the threshold.
+
+        :param data: Normal samples for self-encoding.
+        :param normals: Normal samples used to calculate the threshold.
+        :param anomalies: Anomaly samples used to calculate the threshold.
+        :return: None.
+        """
+
         if np.array(data).ndim == 1:
             data = [data]
 

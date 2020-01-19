@@ -252,6 +252,11 @@ class AnomalyDetection:
         self.__lie.setCpuCores(num=workers)
 
     def get_threshold(self):
+        """Get the threshold.
+
+        :return: The threshold.
+        """
+
         return self.__threshold
 
     @staticmethod

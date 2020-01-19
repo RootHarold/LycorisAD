@@ -192,6 +192,13 @@ class AnomalyDetection:
 
     @staticmethod
     def load(path1, path2):
+        """Import pre-trained models and related configurations.
+
+        :param path1: The path to import the model.
+        :param path2: The path to import the configurations.
+        :return: None.
+        """
+
         l_ad = AnomalyDetection(None)
         l_ad.__ret_pos = []
         l_ad.__ret_neg = []

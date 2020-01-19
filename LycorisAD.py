@@ -172,6 +172,13 @@ class AnomalyDetection:
         return ret
 
     def save(self, path1, path2):
+        """Save the model and related configurations.
+
+        :param path1: The path to store the model.
+        :param path2: The path to store the configurations.
+        :return: None.
+        """
+
         self.__lie.saveModel(path=path1)
         config_copy = self.__config.copy()
         config_copy["threshold"] = self.__threshold

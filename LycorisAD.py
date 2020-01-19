@@ -243,6 +243,12 @@ class AnomalyDetection:
         self.__lie.setLR(learning_rate)
 
     def set_workers(self, workers):
+        """Set the number of worker threads to train the model.
+
+        :param workers: The number of worker threads.
+        :return: None.
+        """
+
         self.__lie.setCpuCores(num=workers)
 
     def get_threshold(self):

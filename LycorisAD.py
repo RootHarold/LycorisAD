@@ -234,6 +234,12 @@ class AnomalyDetection:
         self.__config = config
 
     def set_lr(self, learning_rate):
+        """Set the learning rate of the AutoEncoder.
+
+        :param learning_rate: The learning rate of the AutoEncoder.
+        :return: None.
+        """
+
         self.__lie.setLR(learning_rate)
 
     def set_workers(self, workers):

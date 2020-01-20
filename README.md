@@ -28,6 +28,23 @@ Function | Description |  Inputs | Returns
 **get_threshold**() |  |  | Get the threshold.
 `@staticmethod`<br/>**version**() |  |  | Returns the version information of AnomalyDetection.
 
+Configurable fields:
+
+Field | Description |Default
+-|-|-
+capacity | Capacity of LycorisNet |
+dimension | Dimension of samples |
+nodes | The number of hidden nodes added for each neural network. |
+connections| The number of connections added for each neural network. |
+depths| Total layers of each neural network. |
+batch_size| Batch size. |
+epoch| Epoch. |
+evolution| Number of LycorisNet evolutions. | 0
+population| Population in the genetic algorithm. | 256
+generation| Generation in the genetic algorithm. | 16
+weight| The weights used to calculate the threshold.<br/>The first parameter determines the prediction accuracy of normal samples, while the second parameter determines that of anomaly samples. | [1, 1]
+verbose| Whether to output intermediate information | False
+
 # Examples
 
 # License

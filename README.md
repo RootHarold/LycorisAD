@@ -52,7 +52,7 @@ For a description of the data and its source, see [here](https://github.com/Root
 
 Import the dependent modules:
 
-```
+```python
 from LycorisAD import AnomalyDetection
 import scipy.io as sio
 import random
@@ -61,7 +61,7 @@ from sklearn.metrics import roc_auc_score
 
 Read the data and divide it:
 
-```
+```python
 X = sio.loadmat('mnist.mat')["X"]
 X = (X + 138) / 393.0
 
@@ -82,7 +82,7 @@ test_anomaly = anomaly[630:]
 
 Prepare the configuration information and instantiate the **AnomalyDetection** object:
 
-```
+```python
 conf = {"capacity": 64, "dimension": 100, "nodes": 300, "connections": 6000, "depths": 4, "batch_size": 8,
         "epoch": 1, "evolution": 1, "verbose": True}
 lad = AnomalyDetection(conf)
@@ -90,13 +90,13 @@ lad = AnomalyDetection(conf)
 
 Self-encoding:
 
-```
+```python
 lad.encode(data1, data2, data3)
 ```
 
 Calculate the AUC on the test set:
 
-```
+```python
 result1 = lad.detect(test_normal)
 result2 = lad.detect(test_anomaly)
 

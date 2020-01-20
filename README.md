@@ -13,6 +13,20 @@ pip install LycorisAD
 ```
 
 # Documents
+The APIs provided by **AnomalyDetection** (`from LycorisAD import AnomalyDetection`):
+
+Function | Description |  Inputs | Returns
+-|-|-|-
+**AnomalyDetection**(config) | Constructor. | **config**: The configuration information, including 12 configuration fields. | An object of the class AnomalyDetection.
+**encode**(data, normals, anomalies) | Self-encode the samples and calculate the threshold. | **data**: Normal samples for self-encoding.<br/> **normals**: Normal samples used to calculate the threshold.<br/> **anomalies**: Anomaly samples used to calculate the threshold. |
+**detect**(data) | Detect samples. | **data**: Samples to be detected. | The results after detecting the samples are returned as a list. There are two fields, the first is a Boolean value, and the second is the reconstruction error. Where 'True' indicates normal and 'False' indicates anomaly.
+**save**(path1, path2) | Save the model and related configurations. | **path1**: The path to store the model.<br/> **path2**: The path to store the configurations. |
+`@staticmethod`<br/>**load**(path1, path2) | Import pre-trained models and related configurations. | **path1**: The path to import the model.<br/> **path2**: The path to import the configurations. |
+**set_config**(config) | Set the configuration information of AnomalyDetection. | **config**: The configuration information, including 12 configuration fields. |
+**set_lr**(learning_rate) | Set the learning rate of the AutoEncoder. | **learning_rate**: The learning rate of the AutoEncoder. | 
+**set_workers**(workers) | Set the number of worker threads to train the model. | **workers**: The number of worker threads. | 
+**get_threshold**() |  |  | Get the threshold.
+`@staticmethod`<br/>**version**() |  |  | Returns the version information of AnomalyDetection.
 
 # Examples
 

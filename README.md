@@ -46,6 +46,71 @@ weight| The weights used to calculate the threshold.<br/>The first parameter det
 verbose| Whether to output intermediate information. | False
 
 # Examples
+* **MNIST**
+
+For a description of the data and its source, see [here](https://github.com/RootHarold/LycorisAD/tree/master/Examples/MNIST).
+
+Import the dependent modules:
+
+```
+from LycorisAD import AnomalyDetection
+import scipy.io as sio
+import random
+from sklearn.metrics import roc_auc_score
+```
+
+Read the data and divide it:
+
+```
+X = sio.loadmat('mnist.mat')["X"]
+X = (X + 138) / 393.0
+
+normal = X[:6903]
+random.shuffle(normal)
+normal = normal[:6900]
+
+anomaly = X[6903:]
+random.shuffle(anomaly)
+
+data1 = normal[:5560]
+data2 = normal[5560:6210]
+data3 = anomaly[:630]
+
+test_normal = normal[6210:]
+test_anomaly = anomaly[630:]
+```
+
+Prepare the configuration information and instantiate the **AnomalyDetection** object:
+
+```
+conf = {"capacity": 64, "dimension": 100, "nodes": 300, "connections": 6000, "depths": 4, "batch_size": 8,
+        "epoch": 1, "evolution": 1, "verbose": True}
+lad = AnomalyDetection(conf)
+```
+
+Self-encoding:
+
+```
+lad.encode(data1, data2, data3)
+```
+
+Calculate the AUC on the test set:
+
+```
+result1 = lad.detect(test_normal)
+result2 = lad.detect(test_anomaly)
+
+auc1 = [0] * len(result1) + [1] * len(result2)
+auc2 = []
+for item in (result1 + result2):
+    if item[0]:
+        auc2.append(0)
+    else:
+        auc2.append(1)
+print("AUC:", roc_auc_score(auc1, auc2))
+```
+
+* *More samples will be released in the future.*
 
 # License
 LycorisAD is released under the [LGPL-3.0](https://github.com/RootHarold/Lycoris/blob/master/LICENSE) license. By using, distributing, or contributing to this project, you agree to the terms and conditions of this license.

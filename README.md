@@ -1,3 +1,5 @@
+![logo](https://github.com/RootHarold/LycorisAD/blob/master/logo/logo.svg)
+
 **LycorisAD** is an elegant outlier detection algorithm framework based on *AutoEncoder*.
 
 The neural network is built with [**LycorisNet**](https://github.com/RootHarold/Lycoris), and the threshold of reconstruction error is calculated by genetic algorithm (based on [deap](https://github.com/DEAP/deap)).

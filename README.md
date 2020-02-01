@@ -8,6 +8,8 @@ The neural network is built with [**LycorisNet**](https://github.com/RootHarold/
 * Provide minimalist APIs to make development more efficient.
 
 # Installation
+The project is based on LycorisNet, and the installation of LycorisNet can be found [**here**](https://github.com/RootHarold/Lycoris#Installation).
+
 ```
 pip install LycorisAD
 ```

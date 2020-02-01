@@ -261,7 +261,7 @@ class AnomalyDetection:
         """Returns the version information of AnomalyDetection."""
 
         lycoris_version = Lycoris.version()
-        return "LycorisAD 1.0-Dev By RootHarold." + "\nPowered By " + lycoris_version[:-15] + "."
+        return "LycorisAD 1.0.2 By RootHarold." + "\nPowered By " + lycoris_version[:-15] + "."
 
     def __decode(self, individual):
         """The decoder assisting in the genetic algorithm.
@@ -297,6 +297,7 @@ class AnomalyDetection:
         :param config: The configuration information, including 12 configuration fields.
         :return: None.
         """
+
         keys = ["capacity", "dimension", "nodes", "connections", "depths", "batch_size", "epoch"]
         for item in keys:
             if item not in config:

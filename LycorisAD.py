@@ -81,10 +81,10 @@ class AnomalyDetection:
         batch = math.ceil(len(data) / float(self.__config["batch_size"]))
         remainder = len(data) % self.__config["batch_size"]
 
-        for i in range(self.__config["epoch"]):
-            for _ in range(remainder):
-                data_copy.append(random.choice(data))
+        for _ in range(remainder):
+            data_copy.append(random.choice(data))
 
+        for i in range(self.__config["epoch"]):
             random.shuffle(data_copy)
             temp = [None] * self.__config["batch_size"]
             pos = 0

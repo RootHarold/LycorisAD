@@ -261,7 +261,7 @@ class AnomalyDetection:
         """Returns the version information of AnomalyDetection."""
 
         lycoris_version = Lycoris.version()
-        return "LycorisAD 1.0.2 By RootHarold." + "\nPowered By " + lycoris_version[:-15] + "."
+        return "LycorisAD 1.1.2 By RootHarold." + "\nPowered By " + lycoris_version[:-15] + "."
 
     def __decode(self, individual):
         """The decoder assisting in the genetic algorithm.

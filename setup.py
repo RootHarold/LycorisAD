@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='LycorisAD',
-    version='1.0.2',
+    version='1.1.2',
     description="An elegant outlier detection algorithm framework based on AutoEncoder.",
     author="RootHarold",
     author_email="rootharold@163.com",

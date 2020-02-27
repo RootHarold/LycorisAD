@@ -77,12 +77,12 @@ class AnomalyDetection:
         else:
             flag = False
 
-        data_copy = list(data).copy()
         batch = math.ceil(len(data) / float(self.__config["batch_size"]))
         remainder = len(data) % self.__config["batch_size"]
 
-        for _ in range(remainder):
-            data_copy.append(random.choice(data))
+        data_copy = list(data).copy()
+        if remainder > 0:
+            data_copy.extend(random.choices(data, k=(self.__config["batch_size"] - remainder)))
 
         for i in range(self.__config["epoch"]):
             random.shuffle(data_copy)

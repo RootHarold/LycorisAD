@@ -117,4 +117,4 @@ print("AUC:", roc_auc_score(auc1, auc2))
 * *More examples will be released in the future.*
 
 # License
-LycorisAD is released under the [LGPL-3.0](https://github.com/RootHarold/Lycoris/blob/master/LICENSE) license. By using, distributing, or contributing to this project, you agree to the terms and conditions of this license.
+LycorisAD is released under the [LGPL-3.0](https://github.com/RootHarold/LycorisAD/blob/master/LICENSE) license. By using, distributing, or contributing to this project, you agree to the terms and conditions of this license.

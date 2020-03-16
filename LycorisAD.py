@@ -30,7 +30,7 @@ class AnomalyDetection:
         __threshold: Those below this threshold are normal samples, and those above this threshold are anomaly samples.
         __max_num: AnomalyDetection uses a genetic algorithm to calculate the threshold, and __max_num assists the
                    calculation process.
-        __flag: Avoid preheat operations being executed multiple times in LycorisNet.
+        __count: The counter for controlling "enrich()" of LycorisNet.
     """
 
     def __init__(self, config):
@@ -51,7 +51,7 @@ class AnomalyDetection:
             self.__ret_neg = []
             self.__threshold = 0.0
             self.__max_num = 0.0
-            self.__flag = True
+            self.__count = 0
 
     def encode(self, data, normals, anomalies):
         """Self-encode the samples and calculate the threshold.
@@ -71,12 +71,6 @@ class AnomalyDetection:
         if np.array(anomalies).ndim == 1:
             anomalies = [anomalies]
 
-        flag = True
-        if self.__flag:
-            self.__flag = False
-        else:
-            flag = False
-
         batch = math.ceil(len(data) / float(self.__config["batch_size"]))
         remainder = len(data) % self.__config["batch_size"]
 
@@ -89,21 +83,20 @@ class AnomalyDetection:
             temp = [None] * self.__config["batch_size"]
             pos = 0
 
-            for j in range(batch):
+            for _ in range(batch):
                 for k in range(self.__config["batch_size"]):
                     temp[k] = data_copy[pos]
                     pos = pos + 1
 
-                if flag:
-                    if i * batch + j == self.__config["evolution"]:
-                        self.__lie.enrich()
+                if self.__count == self.__config["evolution"]:
+                    self.__lie.enrich()
 
-                    if i * batch + j < self.__config["evolution"]:
-                        self.__lie.fitAll(temp, temp)
-                    else:
-                        self.__lie.fit(temp, temp)
+                if self.__count < self.__config["evolution"]:
+                    self.__lie.fitAll(temp, temp)
                 else:
                     self.__lie.fit(temp, temp)
+
+                self.__count = self.__count + 1
 
             if self.__config["verbose"]:
                 logging.info("Epoch " + str(i + 1) + " : " + str(self.__lie.getLoss()))
@@ -203,7 +196,7 @@ class AnomalyDetection:
         l_ad.__ret_pos = []
         l_ad.__ret_neg = []
         l_ad.__max_num = 0.0
-        l_ad.__flag = False
+        l_ad.__count = 0
 
         l_ad.__lie = loadModel(path1, capacity=1)
 

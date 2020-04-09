@@ -91,11 +91,7 @@ class AnomalyDetection:
                 if self.__count == self.__config["evolution"]:
                     self.__lie.enrich()
 
-                if self.__count < self.__config["evolution"]:
-                    self.__lie.fitAll(temp, temp)
-                else:
-                    self.__lie.fit(temp, temp)
-
+                self.__lie.fit(temp, temp)
                 self.__count = self.__count + 1
 
             if self.__config["verbose"]:

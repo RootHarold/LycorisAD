@@ -203,8 +203,6 @@ class AnomalyDetection:
         config = json.loads(json_info)
         l_ad.__threshold = config["threshold"]
         config.pop("threshold")
-        config["capacity"] = 1
-        config["evolution"] = 0
         l_ad.__check_config(config)
         l_ad.__config = config
         if l_ad.__config["verbose"]:

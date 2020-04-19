@@ -45,7 +45,6 @@ class AnomalyDetection:
             self.__config = config
             self.__lie = Lycoris(capacity=config["capacity"], inputDim=config["dimension"],
                                  outputDim=config["dimension"], mode="predict")
-            self.__lie.setMutateOdds(0)
             self.__lie.preheat(config["nodes"], config["connections"], config["depths"])
             self.__ret_pos = []
             self.__ret_neg = []
@@ -198,8 +197,6 @@ class AnomalyDetection:
         l_ad.__max_num = 0.0
         l_ad.__count = 0
 
-        l_ad.__lie = loadModel(path1, capacity=1)
-
         f = open(path2, 'r')
         json_info = f.read()
         f.close()
@@ -209,6 +206,9 @@ class AnomalyDetection:
         config.pop("threshold")
         l_ad.__check_config(config)
         l_ad.__config = config
+
+        l_ad.__lie = loadModel(path1, capacity=config["capacity"])
+
         if l_ad.__config["verbose"]:
             logging.info("Model imported successfully.")
 

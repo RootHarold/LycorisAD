@@ -30,7 +30,7 @@ if __name__ == '__main__':
     test_normal = normal[6210:]
     test_anomaly = anomaly[630:]
 
-    conf = {"capacity": 64, "dimension": 100, "nodes": 300, "connections": 6000, "depths": 4, "batch_size": 8,
+    conf = {"capacity": 128, "dimension": 100, "nodes": 300, "connections": 6000, "depths": 4, "batch_size": 8,
             "epoch": 1, "evolution": 1, "verbose": True}
     lad = AnomalyDetection(conf)
     
